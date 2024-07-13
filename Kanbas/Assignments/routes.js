@@ -1,12 +1,5 @@
-import db from "../db/index.js";
-
+import db from "../database/index.js";
 export default function AssignmentRoutes(app) {
-  app.get("/api/courses/:cid/assignments", (req, res) => {
-    const { cid } = req.params;
-    const assignments = db.assignments.filter((a) => a.course === cid);
-    res.json(assignments);
-  });
-
   app.post("/api/courses/:cid/assignments", (req, res) => {
     const { cid } = req.params;
     const newAssignment = {
@@ -18,16 +11,22 @@ export default function AssignmentRoutes(app) {
     res.send(newAssignment);
   });
 
+  app.get("/api/courses/:cid/assignments", (req, res) => {
+    const { cid } = req.params;
+    const assignments = db.assignments.filter((a) => a.course === cid);
+    res.json(assignments);
+  });
+
   app.delete("/api/assignments/:aid", (req, res) => {
     const { aid } = req.params;
-    db.assignments = db.assignments.filter((a) => a_id !== aid);
+    db.assignments = db.assignments.filter((a) => a._id !== aid);
     res.sendStatus(204);
   });
 
   app.put("/api/assignments/:aid", (req, res) => {
-    const { mid } = req.params;
+    const { aid } = req.params;
     const assignmentIndex = db.assignments.findIndex(
-      (m) => m._id === mid);
+      (a) => a._id === aid);
     db.assignments[assignmentIndex] = {
       ...db.assignments[assignmentIndex],
       ...req.body
