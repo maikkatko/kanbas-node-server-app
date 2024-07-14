@@ -1,4 +1,4 @@
-import db from "../database/index.js";
+import db from "../Database/index.js";
 export default function CourseRoutes(app) {
   app.post("/api/courses", (req, res) => {
     const course = {
