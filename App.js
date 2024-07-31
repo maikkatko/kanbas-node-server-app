@@ -10,7 +10,7 @@ import AssignmentRoutes from './Assignments/routes.js';
 import Hello from './hello.js';
 import Lab5 from './Lab5/index.js';
 
-import model from "../Users/model.js";
+import model from "./Users/model.js";
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
 
