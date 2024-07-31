@@ -10,20 +10,19 @@ import AssignmentRoutes from './Assignments/routes.js';
 import Hello from './hello.js';
 import Lab5 from './Lab5/index.js';
 
+import model from "../Users/model.js";
+
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
 
-try {
-  mongoose.connect(CONNECTION_STRING);
+mongoose.connect(CONNECTION_STRING);
 
-  console.log('Successfully connected to MongoDB using Mongoose');
+const allData = await model.find({});
+console.log('All data in the User database:');
+console.log(JSON.stringify(allData, null, 2));
 
-  // Optional: You can perform additional checks here
-  // For example, you can check the connection state
-  console.log(`Connection state: ${mongoose.connection.readyState}`);
-  // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
-} catch (error) {
-  console.error('Error connecting to MongoDB:', error);
-}
+// Optional: You can also count the documents
+const count = await model.countDocuments();
+console.log(`Total number of documents: ${count}`);
 
 const app = express()
 
