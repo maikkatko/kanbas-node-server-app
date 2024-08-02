@@ -20,7 +20,7 @@ const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.
 mongoose.connect(CONNECTION_STRING);
 
 const userData = await usersModel.find({});
-console.log('All data in the User database:');
+console.log('All data in the user database:');
 console.log(JSON.stringify(userData, null, 2));
 
 // Optional: You can also count the documents
@@ -28,7 +28,7 @@ const userCount = await usersModel.countDocuments();
 console.log(`Total number of documents: ${userCount}`);
 
 const coursesData = await coursesModel.find({});
-console.log('All data in the User database:');
+console.log('All data in the courses database:');
 console.log(JSON.stringify(coursesData, null, 2));
 
 // Optional: You can also count the documents
@@ -36,7 +36,7 @@ const coursesCount = await coursesModel.countDocuments();
 console.log(`Total number of documents: ${coursesCount}`);
 
 const modulesData = await coursesModel.find({});
-console.log('All data in the User database:');
+console.log('All data in the modules database:');
 console.log(JSON.stringify(modulesData, null, 2));
 
 // Optional: You can also count the documents
@@ -44,7 +44,7 @@ const modulesCount = await coursesModel.countDocuments();
 console.log(`Total number of documents: ${modulesCount}`);
 
 const assignmentsData = await coursesModel.find({});
-console.log('All data in the User database:');
+console.log('All data in the assignments database:');
 console.log(JSON.stringify(assignmentsData, null, 2));
 
 // Optional: You can also count the documents
